@@ -1,0 +1,44 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.css"/>
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.js"></script>
+</head>
+<body>
+
+<table id="formations" class="table">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Date</th>
+        <th>Formation</th>
+        <th>Other Formation</th>
+        <th>contents</th>
+        <th>contents Improve</th>
+        <th>conditions</th>
+        <th>conditions Improve</th>
+        <th>New Knowledge</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for formation in formations %}
+        <tr>
+            <td>{{ formation.id }}</td><td>{{ formation.date|date('Y-m-d') }}</td><td>{{ formation.formation.label }}</td><td>{{ formation.otherFormation }}</td>
+            <td>{{ formation.contents.label }}</td><td>{{ formation.contentsImprove }}</td><td>{{ formation.conditions.label }}</td>
+            <td>{{ formation.conditionsImprove }}</td><td>{{ formation.newKnowledge.label }}</td>
+        </tr>
+
+    {% endfor %}
+
+    </tbody>
+</table>
+
+</body>
+<script>
+$(document).ready(function(){
+    $('#formations').DataTable();
+});
+</script>
+</html>

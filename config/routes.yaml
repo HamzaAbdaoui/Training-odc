@@ -1,6 +1,34 @@
 # This file is the entry point to configure your own HTTP routes.
 # Files in the routes/ subdirectory configure the routes for your dependencies.
 
-#index:
-#    path: /
-#    defaults: { _controller: 'App\Controller\DefaultController::index' }
+# Basic
+count:
+  path: /
+  defaults: { _controller: 'App\Controller\BasicController::count' }
+
+# Attendees
+attendees:
+  path: /attendees
+  defaults: { _controller: 'App\Controller\AttendeesController::getAttendees' }
+
+attendee:
+  path: /attendees/{attenderId}
+  defaults: { _controller: 'App\Controller\AttendeesController::getAttendeeDetails' }
+
+# Events
+events:
+  path: /events
+  defaults: { _controller: 'App\Controller\EvaluationEventsController::getEvaluationEvents' }
+
+event:
+  path: /events/{eventId}
+  defaults: { _controller: 'App\Controller\EvaluationEventsController::getEvaluationEventDetails' }
+
+# Formations
+formations:
+  path: /formations
+  defaults: { _controller: 'App\Controller\EvaluationFormationsController::getEvaluationFormations' }
+
+formation:
+  path: /formations/{formationId}
+  defaults: { _controller: 'App\Controller\EvaluationFormationsController::getEvaluationFormationDetails' }

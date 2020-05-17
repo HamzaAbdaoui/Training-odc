@@ -1,0 +1,45 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.css"/>
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.js"></script>
+</head>
+<body>
+
+<table id="attendees" class="table">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Job</th>
+        <th>OtherJob</th>
+        <th>Establishment</th>
+        <th>Attended</th>
+        <th>CreatedAt</th>
+        <th>UpdateAt</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for attender in attendees %}
+        <tr>
+            <td>{{ attender.id }}</td><td>{{ attender.name }}</td><td>{{ attender.email }}</td><td>{{ attender.phone }}</td>
+            <td>{{ attender.job.label }}</td><td>{{ attender.otherJob }}</td><td>{{ attender.establishment }}</td>
+            <td>{{ attender.attended.label }}</td><td>{{ attender.createdAt|date('Y-m-d') }}</td><td>{{ attender.updatedAt|date('Y-m-d') }}</td>
+        </tr>
+
+    {% endfor %}
+
+    </tbody>
+</table>
+
+</body>
+<script>
+$(document).ready(function(){
+    $('#attendees').DataTable();
+});
+</script>
+</html>

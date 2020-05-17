@@ -1,0 +1,51 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.css"/>
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.js"></script>
+</head>
+<body>
+
+<table id="events" class="table">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Date</th>
+        <th>Place</th>
+        <th>Event</th>
+        <th>OtherEvent</th>
+        <th>Contents</th>
+        <th>Satisfaction Speaker</th>
+        <th>Speaker Improve</th>
+        <th>Subscribe</th>
+        <th>Interested Technology</th>
+        <th>Good Remarks</th>
+        <th>Improve Remarks</th>
+        <th>createdAt</th>
+        <th>updatedAt</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for event in events %}
+        <tr>
+            <td>{{ event.id }}</td><td>{{ event.date|date('Y-m-d') }}</td><td>{{ event.place }}</td><td>{{ event.event.label }}</td>
+            <td>{{ event.otherEvent }}</td><td>{{ event.contents.label }}</td><td>{{ event.satisfactionSpeaker.label }}</td>
+            <td>{{ event.speakerImprove }}</td><td>{{ event.subscribe.label }}</td><td>{{ event.interestedTechnology }}</td>
+            <td>{{ event.goodRemarks }}</td><td>{{ event.improveRemarks }}</td>
+            <td>{{ event.createdAt|date('Y-m-d') }}</td><td>{{ event.updatedAt|date('Y-m-d') }}</td>
+        </tr>
+
+    {% endfor %}
+
+    </tbody>
+</table>
+
+</body>
+<script>
+$(document).ready(function(){
+    $('#events').DataTable();
+});
+</script>
+</html>
